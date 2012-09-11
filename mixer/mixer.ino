@@ -37,17 +37,17 @@ void loop() {
   int cur_G = map(analogRead(level_G), 0, 1023, 0, 255);
   int cur_B = map(analogRead(level_B), 0, 1023, 0, 255);  
 
-  if (oldr != cur_R) {
+  if (abs(oldr - cur_R) > 1) {
     oldr = cur_R;
     Serial.println(String(cur_R) + " " + String(cur_G) + " " + String(cur_B));
     analogWrite(indicator_R, cur_R);
   }
-  if (oldg != cur_G) {
+  if (abs(oldg - cur_G) > 1) {
     oldg = cur_G;
     Serial.println(String(cur_R) + " " + String(cur_G) + " " + String(cur_B));
     analogWrite(indicator_G, cur_G);
   }
-  if (oldb != cur_B) {
+  if (abs(oldb - cur_B) > 1) {
     oldb = cur_B;
     Serial.println(String(cur_R) + " " + String(cur_G) + " " + String(cur_B));
     analogWrite(indicator_B, cur_B);
